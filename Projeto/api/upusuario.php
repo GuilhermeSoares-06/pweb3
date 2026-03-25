@@ -7,14 +7,15 @@ $data = json_decode($json, true);
 $nome  = $data['nome'];
 $login = $data['login'];
 if (empty($senha)) {
-    $sql = "update usuarios 
-            set usunome = ?, usulogin = ?, ususenha = MD5(?)
-            WHERE usuid=?;";
+    $sql = "update usuarios set usunome = ?, usulogin = ? WHERE usuid=?;";
     $prp = $pdo->prepare($sql);
-    $prp->execute(array($nome,$senha,$login));
+    $prp->execute(array($nome,$login,$id));
 
     echo "Atualizado com sucesso";
 } else {
-    echo "Senha não informada. Nenhuma alteração feita.";
+    $senha = $data['senha'];
+    $sql = "update usuarios set usunome = ?, usulogin = ?, ususenha=MD5(?) WHERE usuid=?;";
+    $prp = $pdo->prepare($sql);
+    $prp->execute(array($nome,$login,$senha,$id));
 }
 ?>
