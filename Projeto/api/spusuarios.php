@@ -1,12 +1,12 @@
 <?php
-require '.../app/conexao.php';
+require '../app/conexao.php';
 $pdo = Conexao::conectar();
 $pdo->setattribute(pdo::ATTR_ERRMODE,Pdo::ERRMODE_EXCEPTION);
 $jsn = filter_input(INPUT_GET,'jsn');  
 $data = json_decode($jsn,true);
 $nome = '%'.$data['nome'].'%';
-$sql ="select * from usuarios where usunome like %''%;";
+$sql ="select usuid as id, usunome as nome, usulogin as login, usulogado as logado from usuarios where usunome like %''%;";
 $prp= $pdo->prepare($sql);
-$prp->execute($nome);
+$prp->execute([$nome]);
 $data = $prp->fetchall(PDO::FETCH_ASSOC);
 echo json_encode($data);

@@ -8,7 +8,7 @@ $data = json_decode($jsn,true);
 $nome = $data['nome'];
 $login = $data['login'];
 $senha = $data['senha'];
-$sql= "insert into usuarios (usunome, usulogin, ususenha) values (?,?,MD5(?));";
+$sql= "Delet from usuarios (usunome, usulogin, ususenha) where usuid=(?);";
 $prp= $pdo->prepare($sql);
 $prp->execute(array($nome,$login,$senha));
 CONEXAO::desconectar();

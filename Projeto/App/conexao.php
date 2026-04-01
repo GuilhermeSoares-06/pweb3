@@ -15,7 +15,7 @@ class Conexao
 public static function conectar(){
     if(null===self::$con){
         try{
-            self::$con = new PDO("mysql:host=".self::$host.";dbname=".self::$dbname,self::$user,self::$pass.array
+            self::$con = new PDO("mysql:host=".self::$host.";dbname=".self::$dbname,self::$user,self::$pass,array
             (PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         }catch(Exception $erro){
             die($erro->getmessage());
