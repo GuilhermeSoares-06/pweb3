@@ -4,8 +4,9 @@ $pdo = Conexao::conectar();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $json = filter_input(INPUT_GET, 'jsn');
 $data = json_decode($json, true);
-$nome  = $data['nome'];
+$nome = $data['nome'];
 $login = $data['login'];
+$id = $data['id'];
 if (empty($senha)) {
     $sql = "update usuarios set usunome = ?, usulogin = ? WHERE usuid=?;";
     $prp = $pdo->prepare($sql);

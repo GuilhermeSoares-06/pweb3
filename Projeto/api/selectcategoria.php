@@ -2,7 +2,7 @@
 require '../app/conexao.php';
 $pdo = Conexao::conectar();
 $pdo->setattribute(pdo::ATTR_ERRMODE,Pdo::ERRMODE_EXCEPTION);
-$sql ="select usuid as id, usunome as NOME, usulogin as login, usulogado as logado from usuarios; ";
+$sql ="select catid as ID, catnome as NOME, catativo as ATIVO from categorias; ";
 $prp= $pdo->prepare($sql);
 $prp->execute(array());
 $data = $prp->fetchall(PDO::FETCH_ASSOC);
