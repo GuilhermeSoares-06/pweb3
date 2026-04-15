@@ -19,4 +19,5 @@ if (empty($senha)) {
     $prp = $pdo->prepare($sql);
     $prp->execute(array($nome,$login,$senha,$id));
 }
+conexao::desconectar();
 ?>

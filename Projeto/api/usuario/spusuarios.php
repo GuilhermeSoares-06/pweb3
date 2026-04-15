@@ -10,3 +10,4 @@ $prp= $pdo->prepare($sql);
 $prp->execute([$nome]);
 $data = $prp->fetchall(PDO::FETCH_ASSOC);
 echo json_encode($data);
+Conexao::desconectar();

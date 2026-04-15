@@ -12,3 +12,4 @@ $prp= $pdo->prepare($sql);
 $prp->execute(array($usuario,$senha));
 $data = $prp->fetchall(PDO::FETCH_ASSOC);
 echo json_decode($data);
+Conexao::desconectar();
